@@ -1,0 +1,7 @@
+body {
+    background: #8b7c65
+}
+
+#canvas {
+    display: flex;
+}
