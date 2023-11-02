@@ -6,6 +6,7 @@ function initCanvas(size) {
         for (let j=0; j < size; j++) {
         const div = document.createElement('div');
         div.className = "pixel"
+        div.setAttribute('style', 'background: #fff')
         div.addEventListener("mouseover", () => {
             div.style.backgroundColor = 'gray';
         })
@@ -32,10 +33,43 @@ function changeCanvas(size) {
     // }
 }
 
+function rainbow(pix) {
+    console.log("This is rainbow speaking!")
+    const colors = ['#D88C9A', '#F2D0A9', '#F1E3D3', '#99C1B9', '#A292C8']
+    // const pix = document.querySelector('.pixel');
+    let random = Math.floor(Math.random() * 5);
+    pix.addEventListener("mouseover", () => {
+        pix.style.backgroundColor = colors[random];
+    })
+}
+
+function changeColor(pix, color) {
+    pix.addEventListener("mouseover", () => {
+        pix.style.backgroundColor = color;
+    })
+}
+
+const rbbtn = document.querySelector('#colorful');
+rbbtn.addEventListener('click', () => {
+    const pxs = document.querySelectorAll('.pixel');
+    for (px of pxs){
+        rainbow(px);
+    };
+});
+
 initCanvas(16)
 
 let canvasSize = document.getElementById('canvassize');
 
 canvasSize.oninput = function() {
-    changeCanvas(this.value)
-}
+    changeCanvas(this.value);
+};
+
+let clr = document.getElementById('#colorpick');
+let clrval = document.getElementById('#colorpick').value;
+
+clr.addEventListener("change", () => {
+    const pxs = document.querySelectorAll('.pixel');
+    for (px of pxs) {
+        changeColor(px, clrval)
+    }});
