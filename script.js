@@ -44,6 +44,7 @@ function rainbow(pix) {
 }
 
 function changeColor(pix, color) {
+    console.log("This is changeColor() speaking!")
     pix.addEventListener("mouseover", () => {
         pix.style.backgroundColor = color;
     })
@@ -65,11 +66,10 @@ canvasSize.oninput = function() {
     changeCanvas(this.value);
 };
 
-let clr = document.getElementById('#colorpick');
-let clrval = document.getElementById('#colorpick').value;
+let clr = document.getElementById('colorpick');
 
-clr.addEventListener("change", () => {
+clr.addEventListener("input", () => {
     const pxs = document.querySelectorAll('.pixel');
     for (px of pxs) {
-        changeColor(px, clrval)
+        changeColor(px, clr.value)
     }});
