@@ -1,16 +1,37 @@
+@font-face {
+    font-family: RetroGaming;
+    src: url('./Retro\ Gaming.ttf') format('truetype');
+}
+
 body {
     background: #8b7c65;
+    font-family: RetroGaming;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     max-height: 100vh;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.ui {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
 }
 
 #canvas {
     display: flex;
     gap: 0px;
-    width: 90%;
-    height: 90%;
+    width: 50%;
+    height: 50%;
 }
 
 .col {
