@@ -8,11 +8,8 @@ function initCanvas(size) {
         div.className = "pixel"
         div.setAttribute('style', 'background: #fff')
         div.addEventListener("mouseover", () => {
-            div.style.backgroundColor = 'gray';
+            div.style.backgroundColor = '#AED9E0';
         })
-        // div.onmousedown = function() {  //div.onmouseover = function() {
-        //     this.style.backgroundColor = 'gray';
-        // }
         col.appendChild(div)
         }
         canvas.appendChild(col)
@@ -34,8 +31,8 @@ function changeCanvas(size) {
 }
 
 function rainbow(pix) {
-    console.log("This is rainbow speaking!")
-    const colors = ['#D88C9A', '#F2D0A9', '#F1E3D3', '#99C1B9', '#A292C8']
+    console.log("This is rainbow() speaking!")
+    const colors = ['#AED9E0', '#FFA69E', '#FAF3DD', '#F3BE68', '#AA8774']
     // const pix = document.querySelector('.pixel');
     let random = Math.floor(Math.random() * 5);
     pix.addEventListener("mouseover", () => {
@@ -48,6 +45,17 @@ function changeColor(pix, color) {
     pix.addEventListener("mouseover", () => {
         pix.style.backgroundColor = color;
     })
+}
+
+function gradual(pix) { //FIXME
+    console.log("This is gradual() speaking!");
+    opac = 0
+    // grad.style.backgroundColor = `rgba(0,0,0${opac})`
+    pix.addEventListener("mouseover", () => {
+        let grad = document.createElement('div');
+        grad.className = 'grad'
+        grad.setAttribute('style', `background: rgba(0,0,0, 0.05); width: 100%; height: 100%;`)
+});
 }
 
 const rbbtn = document.querySelector('#colorful');
@@ -73,3 +81,12 @@ clr.addEventListener("input", () => {
     for (px of pxs) {
         changeColor(px, clr.value)
     }});
+
+let lowopac = document.getElementById('graduallyDark');
+
+lowopac.addEventListener("click", () => {
+    const pxs = document.querySelectorAll('.pixel');
+    for (px of pxs) {
+        gradual(px);
+    }
+})
